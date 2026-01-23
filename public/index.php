@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    $_SESSION['is_admin'] = true;
+    require '../config/db.php';
+    $con = dbConnect();
+    $stmt = $con->prepare("SELECT * FROM products");
+    $stmt->execute();
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,47 +90,33 @@
                         <option value="price_desc">Price: High to Low</option>
                     </select>
                 </div>
-
+                
                 <!-- PRODUCTS GRID -->
 
                 <div class="products_grid">
                     
-                    <div class="product_card">
-                        <!-- <img src="" alt="brushholder"> -->
-                        <h4>Acrylic Dust Free Brush Holder</h4>
-                        <p class="price">Rs. 1999/-</p>
-                    </div>
+                    <?php if (count($products) > 0): ?>
+                    <?php foreach ($products as $product): ?>
+                        <div class="product_card">
 
-                    <div class="product_card">
-                        <!-- <img src="assets/images/makeup-organizer.jpg" alt=""> -->
-                        <h4>Two-Tier Makeup Organizer</h4>
-                        <p class="price">Rs. 3,499</p>
-                    </div>
+                            <h4><?= htmlspecialchars($product['product_name']) ?></h4>
+                            <p class="price">Rs. <?= htmlspecialchars($product['price']) ?>/-</p>
 
-                    <div class="product_card">
-                        <!-- <img src="assets/images/crystal-lamp.jpg" alt=""> -->
-                        <h4>Crystal Touch Mood Lamp</h4>
-                        <p class="price">Rs. 2,499</p>
-                    </div>
+                            <!-- ADMIN ONLY ACTIONS -->
+                            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+                                <div class="admin_actions">
+                                    <a href="admin/edit_product.php?id=<?= $product['id'] ?>">Edit</a>
+                                    |
+                                    <a href="admin/delete_product.php?id=<?= $product['id'] ?>"
+                                       onclick="return confirm('Are you sure?');">Delete</a>
+                                </div>
+                            <?php endif; ?>
 
-                    <div class="product_card">
-                        <!-- <img src="assets/images/gift-bag.jpg" alt=""> -->
-                        <h4>Luxury Gift Bag Set</h4>
-                        <p class="price">Rs. 1,299</p>
-                    </div>
-
-                    <div class="product_card">
-                        <!-- <img src="assets/images/wall-decor.jpg" alt=""> -->
-                        <h4>Metal Wall Decor (Premium)</h4>
-                        <p class="price">Rs. 4,999</p>
-                    </div>
-
-                    <div class="product_card">
-                        <!-- <img src="assets/images/storage-box.jpg" alt=""> -->
-                        <h4>Aesthetic Storage Box</h4>
-                        <p class="price">Rs. 2,199</p>
-                    </div>
-
+                        </div>
+                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <p>No products found.</p>
+                        <?php endif; ?>
                 </div>
             </section>
         </div>
