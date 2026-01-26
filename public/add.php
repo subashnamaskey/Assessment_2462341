@@ -24,13 +24,13 @@
 	            ':price' => $price
 	        ]);
 
-	        $message = "Product added successfully!";
+	        $message = "Product added successfully";
 	        header("Location: ../public/index.php");
 	        exit;
 
 
 	    } else {
-	        $message = "All fields are required.";
+	        $message = "All fields are required!";
 	    }
 	}
 ?>
@@ -53,7 +53,7 @@
 		    <select name="category" required>
 		        <option value="">Select Category</option>
 		        <option value="beauty_organizers">Beauty Organizers</option>
-		        <option value="home_decor">Home Decor</option>
+		        <option value="home_decor">Home Decors</option>
 		        <option value="wedding_essentials">Wedding Essentials</option>
 		        <option value="gifts">Gifts</option>
 		        <option value="storage">Storage & Organizers</option>
