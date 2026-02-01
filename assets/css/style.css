@@ -95,6 +95,18 @@ body {
 }
 
 /* CONTENT */
+/*form{
+    display: block;
+}
+
+form label,
+form input,
+form select,
+form button {
+    display: block !important;
+    margin-bottom: 15px;
+}*/
+
 .content {
     background-color: #fff;
     padding: 20px;
@@ -152,6 +164,28 @@ body {
     color: #8b2c2c;
     font-size: 15px;
 }
+
+.form_group {
+    margin-bottom: 15px;
+}
+
+
+/*Add page upload image*/
+
+/*.file_label {
+    display: block;
+    padding: 10px 15px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.file_label:hover {
+    background-color: #333;
+}*/
+
 
 /* FOOTER */
 

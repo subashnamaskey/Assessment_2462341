@@ -99,6 +99,19 @@
                     <?php foreach ($products as $product): ?>
                         <div class="product_card">
 
+                            <!-- PRODUCT IMAGE UPLOAD -->
+
+                            <?php if (!empty($product['image'])): ?>
+                                <img 
+                                    src="../assets/<?= htmlspecialchars($product['image']) ?>"
+                                    alt="<?= htmlspecialchars($product['product_name']) ?>"
+                                    style="width:100%; height:180px; object-fit:cover; margin-bottom:10px;"
+                                >
+
+
+                            <?php endif; ?>
+
+
                             <h4><?= htmlspecialchars($product['product_name']) ?></h4>
                             <p class="price">Rs. <?= htmlspecialchars($product['price']) ?>/-</p>
 
