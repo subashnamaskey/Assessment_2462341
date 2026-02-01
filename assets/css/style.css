@@ -94,19 +94,6 @@ body {
     background-color: #fff;
 }
 
-/* CONTENT */
-/*form{
-    display: block;
-}
-
-form label,
-form input,
-form select,
-form button {
-    display: block !important;
-    margin-bottom: 15px;
-}*/
-
 .content {
     background-color: #fff;
     padding: 20px;
@@ -165,27 +152,63 @@ form button {
     font-size: 15px;
 }
 
-.form_group {
-    margin-bottom: 15px;
+/* SORT + ADD PRODUCT WRAPPER */
+.sort_actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
-
-/*Add page upload image*/
-
-/*.file_label {
-    display: block;
-    padding: 10px 15px;
-    background-color: #000;
-    color: #fff;
-    cursor: pointer;
+/* ADD PRODUCT BUTTON */
+.add_product_btn {
+    padding: 8px 14px;
+    background-color: #925a5b;
+    color: #ffffff;
+    text-decoration: none;
     border-radius: 4px;
-    margin-bottom: 15px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
 }
 
-.file_label:hover {
-    background-color: #333;
-}*/
+.add_product_btn:hover {
+    background-color: #7b4748;
+}
 
+.edit_product_btn {
+    padding: 3px 5px;
+    background-color: #925a5b;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.edit_product_btn:hover {
+    background-color: #7b4748;
+}
+
+.delete_product_btn {
+    padding: 3px 5px;
+    background-color: #925a5b;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete_product_btn:hover {
+    background-color: #7b4748;
+}
+
+/* Space between price and admin buttons */
+.product_card .admin_actions {
+    margin-top: 10px;
+}
 
 /* FOOTER */
 

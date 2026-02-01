@@ -15,7 +15,7 @@
     <title>FREYA | All Products</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css?v=2">
 </head>
 <body>
     <div class="page_wrapper">
@@ -75,22 +75,32 @@
 
             <section class="content">
                 
-
-                <!-- HEADER -->
+            <!-- HEADER -->
 
                 <div class="content_header">
                     <h2>All Products</h2>
 
-                    <!-- SORT BY -->
+                    <div class="sort_actions">
+                        
+                        <!-- SORT BY -->
 
-                    <select>
-                        <option value="">Sort by:</option>
-                        <option value="new">New Products</option>
-                        <option value="price_asc">Price: Low to High</option>
-                        <option value="price_desc">Price: High to Low</option>
-                    </select>
+                        <select>
+                            <option value="">Sort by:</option>
+                            <option value="new">New Products</option>
+                            <option value="price_asc">Price: Low to High</option>
+                            <option value="price_desc">Price: High to Low</option>
+                        </select>
+
+                        <!-- ADD PRODUCT (ADMIN ONLY) -->
+
+                        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+                            <button class="add_product_btn" onclick="window.location.href='add.php'">+ Add Product</button>
+
+                        <?php endif; ?>
+
+                    </div>
                 </div>
-                
+
                 <!-- PRODUCTS GRID -->
 
                 <div class="products_grid">
@@ -99,31 +109,17 @@
                     <?php foreach ($products as $product): ?>
                         <div class="product_card">
 
-                            <!-- PRODUCT IMAGE UPLOAD -->
-
-                            <?php if (!empty($product['image'])): ?>
-                                <img 
-                                    src="../assets/<?= htmlspecialchars($product['image']) ?>"
-                                    alt="<?= htmlspecialchars($product['product_name']) ?>"
-                                    style="width:100%; height:180px; object-fit:cover; margin-bottom:10px;"
-                                >
-
-
-                            <?php endif; ?>
-
-
                             <h4><?= htmlspecialchars($product['product_name']) ?></h4>
                             <p class="price">Rs. <?= htmlspecialchars($product['price']) ?>/-</p>
 
                             <!-- ADMIN ONLY ACTIONS -->
                             <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
                                 <div class="admin_actions">
-                                    <a href="admin/edit_product.php?id=<?= $product['id'] ?>">Edit</a>
-                                    |
-                                    <a href="admin/delete_product.php?id=<?= $product['id'] ?>"
-                                       onclick="return confirm('Are you sure?');">Delete</a>
+                                    <button class="edit_product_btn" onclick="window.location.href='edit.php'">Edit Product</button>
+                                    <button class="delete_product_btn" onclick="return confirm('Are you sure?');">Delete Product</button>
                                 </div>
                             <?php endif; ?>
+
 
                         </div>
                         <?php endforeach; ?>
