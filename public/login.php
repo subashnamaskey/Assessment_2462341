@@ -29,19 +29,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
 
-<div style="width: 300px; margin: 50px auto; text-align: center;">
+<div class="login_container">
     <h2>Admin Login</h2>
-    <p style="color:red"><?= $error ?></p>
+    <p class="error_msg"><?= $error ?></p>
 
     <form method="POST">
-        <input type="text" name="username" required placeholder="Username" style="padding: 8px; width: 100%; margin-bottom: 10px;"><br>
-        <input type="password" name="password" required placeholder="Password" style="padding: 8px; width: 100%; margin-bottom: 10px;"><br>
-        <button type="submit" class="add_product_btn" style="width: 100%;">Login</button>
+        <input type="text" name="username" required placeholder="Username" class="login_input"><br>
+        <input type="password" name="password" required placeholder="Password" class="login_input"><br>
+        <button type="submit" class="login_btn">Login</button>
     </form>
 
     <br>
     <p>Don't have an account?</p>
-    <a href="admin_register.php" style="color: #925a5b; font-weight: bold;">Register New Admin</a>
+    <a href="admin_register.php" class="register_link">Register New Admin</a>
 </div>
 
 </body>

@@ -10,7 +10,8 @@ freya body: #fef1ef
     font-family: Times New Roman;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -42,7 +43,7 @@ body {
 .nav_top {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 250px;
 }
 
 /* Logo */
@@ -211,7 +212,7 @@ body {
     margin-top: 10px;
 }
 
-.add_product_btn{
+.add_product_btn {
     padding: 6px 10px;
     background-color: #925a5b;
     color: #ffffff;
@@ -222,26 +223,28 @@ body {
     cursor: pointer;
 }
 
-.add_product_btn:hover{
+.add_product_btn:hover {
     background-color: #7b4748;
 }
 
 .edit_product_btn,
-.delete_product_btn{
-    padding: 3px 5px; 
-    background-color: #925a5b; 
-    color: #ffffff; 
-    text-decoration: none; 
-    border-radius: 4px; 
-    font-size: 14px; 
-    border: none; 
+.delete_product_btn {
+    padding: 6px 10px;
+    background-color: #925a5b;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
     cursor: pointer;
+    line-height: 1.5;
 }
 
 .edit_product_btn:hover,
-.delete_product_btn:hover{
+.delete_product_btn:hover {
     background-color: #7b4748;
 }
+
 /* ================= FOOTER ================= */
 
 .page_wrapper {
@@ -254,4 +257,51 @@ body {
     text-align: center;
     font-size: 14px;
     color: #777;
+}
+
+/* ================= LOGIN ================= */
+
+.login_container {
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.error_msg {
+    color: red;
+}
+
+.login_input {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login_btn {
+    width: 100%;
+    padding: 8px 10px;
+    background-color: #925a5b;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login_btn:hover {
+    background-color: #7b4748;
+}
+
+.register_link {
+    color: #925a5b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register_link:hover {
+    text-decoration: underline;
 }

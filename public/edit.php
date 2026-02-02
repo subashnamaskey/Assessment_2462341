@@ -1,89 +1,33 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['admin'])) {
-        header("Location: login.php");
-        exit;
-    }
-    require "../config/db.php";
-    $con = dbConnect();
+session_start();
+if (!isset($_SESSION['admin'])) exit;
 
-    if (!isset($_GET['id'])) {
-        header("Location: index.php");
-        exit;
-    }
+require "../config/db.php";
+$con = dbConnect();
 
-    $id = $_GET['id'];
-    $message = "";
+$id = $_GET['id'];
 
-    // Fetch existing product
-    $stmt = $con->prepare("SELECT * FROM products WHERE id = :id");
-    $stmt->execute([':id' => $id]);
-    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt = $con->prepare("SELECT * FROM products WHERE id = :id");
+$stmt->execute([':id' => $id]);
+$product = $stmt->fetch();
 
-    if (!$product) {
-        header("Location: index.php");
-        exit;
-    }
-
-    // Update product
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $name = $_POST["product_name"];
-        $category = $_POST["category"];
-        $price = $_POST["price"];
-
-        if (!empty($name) && !empty($category) && !empty($price)) {
-
-            $sql = "UPDATE products 
-                    SET product_name = :name, category = :category, price = :price 
-                    WHERE id = :id";
-
-            $stmt = $con->prepare($sql);
-            $stmt->execute([
-                ':name' => $name,
-                ':category' => $category,
-                ':price' => $price,
-                ':id' => $id
-            ]);
-
-            header("Location: index.php?updated=1");
-            exit;
-        } else {
-            $message = "All fields are required!";
-        }
-    }
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $stmt = $con->prepare(
+        "UPDATE products SET product_name=:n, category=:c, price=:p WHERE id=:id"
+    );
+    $stmt->execute([
+        ':n' => $_POST['product_name'],
+        ':c' => $_POST['category'],
+        ':p' => $_POST['price'],
+        ':id' => $id
+    ]);
+    header("Location: index.php");
+}
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Product | FREYA Admin</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-
-<h2>Edit Product</h2>
-
-<p style="color:green;"><?php echo $message; ?></p>
-
 <form method="POST">
-    <input type="text" name="product_name"
-           value="<?= htmlspecialchars($product['product_name']) ?>" required><br><br>
-
-    <select name="category" required>
-        <option value="">Select Category</option>
-        <option value="beauty_organizers" <?= $product['category']=="beauty_organizers"?"selected":"" ?>>Beauty Organizers</option>
-        <option value="home_decor" <?= $product['category']=="home_decor"?"selected":"" ?>>Home Decors</option>
-        <option value="wedding_essentials" <?= $product['category']=="wedding_essentials"?"selected":"" ?>>Wedding Essentials</option>
-        <option value="gifts" <?= $product['category']=="gifts"?"selected":"" ?>>Gifts</option>
-        <option value="storage" <?= $product['category']=="storage"?"selected":"" ?>>Storage & Organizers</option>
-    </select><br><br>
-
-    <input type="number" name="price"
-           value="<?= htmlspecialchars($product['price']) ?>" required><br><br>
-
-    <button type="submit">Update Product</button>
+    <input name="product_name" value="<?= htmlspecialchars($product['product_name']) ?>"><br>
+    <input name="category" value="<?= htmlspecialchars($product['category']) ?>"><br>
+    <input name="price" value="<?= htmlspecialchars($product['price']) ?>"><br>
+    <button>Update</button>
 </form>
-
-</body>
-</html>
-
