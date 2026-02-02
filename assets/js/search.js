@@ -63,3 +63,50 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+// USER ORDER ACTION
+function orderPlaced() {
+    alert("Order Placed Successfully");
+}
+let deleteForm = null;
+
+function openDeleteModal(button) {
+    deleteForm = button.closest('form');
+    document.getElementById('deleteModal').style.display = 'flex';
+}
+
+function closeDeleteModal() {
+    deleteForm = null;
+    document.getElementById('deleteModal').style.display = 'none';
+}
+
+function confirmDelete() {
+    if (deleteForm) {
+        deleteForm.submit();
+    }
+}
+
+/* ================= ORDER HANDLER ================= */
+
+function placeOrder(productId) {
+    fetch('index.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'order_product_id=' + encodeURIComponent(productId)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+    })
+    .catch(err => {
+        console.error('Order failed', err);
+    });
+}
+
+function closeOrderModal() {
+    document.getElementById('orderModal').style.display = 'none';
+}
+
