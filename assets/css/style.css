@@ -28,7 +28,7 @@ body {
     color: #925a5b;
 }
 
-/* ================= NAVBAR ================= */
+/*NAVBAR*/
 
 .navbar {
     background-color: #fef1ef;
@@ -125,7 +125,7 @@ body {
 }
 
 
-/* ================= MAIN LAYOUT ================= */
+/*MAIN LAYOUT*/
 
 .main_container {
     width: 90%;
@@ -191,7 +191,7 @@ body {
     border: 1px solid #ccc;
 }
 
-/* ================= PRODUCTS ================= */
+/*PRODUCTS*/
 
 .products_grid {
     display: grid;
@@ -335,7 +335,7 @@ body {
     background: #5f2f2f;
 }
 
-/* ================= LOGIN ================= */
+/*LOGIN*/
 
 .login_container {
     width: 300px;
@@ -392,8 +392,6 @@ body {
     text-decoration: underline;
 }
 
-/* ================= CUSTOM SELECT (ALL PAGES) ================= */
-
 select {
     appearance: none;
     -webkit-appearance: none;
@@ -418,7 +416,7 @@ select:focus {
     border-color: #925a5b;
 }
 
-/* ================= FOOTER ================= */
+/*FOOTER*/
 
 /*.page_wrapper {
     flex: 1;

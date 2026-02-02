@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_product_id'])) 
 
     $productId = $_POST['order_product_id'];
 
-    // 1. Fetch product details
+    // Fetch product details
     $stmt = $con->prepare(
         "SELECT product_name, category, price 
          FROM products 

@@ -85,7 +85,7 @@ function confirmDelete() {
     }
 }
 
-/* ================= ORDER HANDLER ================= */
+// ORDER HANDLER
 
 function placeOrder(productId) {
     fetch('index.php', {

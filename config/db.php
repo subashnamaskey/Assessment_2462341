@@ -1,8 +1,8 @@
 <?php
 function dbConnect(){
-    $server = "mysql:host=localhost;dbname=FreyaNepal";
-    $user = "root";
-    $password = "";
+    $server = "mysql:host=localhost;dbname=NP03CS4A240127";
+    $user = "NP03CS4A240127";
+    $password = "U5Ygl1U6tk";
 
     try {
         $con = new PDO($server, $user, $password);
