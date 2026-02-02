@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION['is_admin'] = true;
+    // $_SESSION['is_admin'] = true;
     require '../config/db.php';
     $con = dbConnect();
     $stmt = $con->prepare("SELECT * FROM products");
@@ -23,7 +23,18 @@
         <!-- NAVBAR -->
         <nav class="navbar">
             <div class="nav_container">
-                <h2 class="logo">FREYA</h2>
+
+                <!-- TOP ROW -->
+                <div class="nav_top">
+                    <h2 class="logo">FREYA</h2>
+
+                    <form action="search.php" method="GET" class="nav_search">
+                        <input type="text" name="q" placeholder="Search products">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+
+                <!-- BOTTOM ROW -->
                 <ul class="nav_links">
                     <li>Home</li>
                     <li>Beauty Organizers</li>
@@ -32,8 +43,10 @@
                     <li>Gifts</li>
                     <li>Storage & Organizers</li>
                 </ul>
+
             </div>
         </nav>
+
 
         <!-- MAIN CONTENTS -->
 
@@ -93,10 +106,11 @@
 
                         <!-- ADD PRODUCT (ADMIN ONLY) -->
 
-                        <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+                        <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] === true): ?>
                             <button class="add_product_btn" onclick="window.location.href='add.php'">+ Add Product</button>
-
+                            <button class="add_product_btn" onclick="window.location.href='logout.php'">Logout</button>
                         <?php endif; ?>
+
 
                     </div>
                 </div>
@@ -115,8 +129,15 @@
                             <!-- ADMIN ONLY ACTIONS -->
                             <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
                                 <div class="admin_actions">
-                                    <button class="edit_product_btn" onclick="window.location.href='edit.php'">Edit Product</button>
-                                    <button class="delete_product_btn" onclick="return confirm('Are you sure?');">Delete Product</button>
+                                    <button class="edit_product_btn"
+                                            onclick="window.location.href='edit.php?id=<?= $product['id'] ?>'">Edit Product
+                                    </button>
+
+                                    <button class="delete_product_btn"
+                                            onclick="if(confirm('Are you sure?')) window.location.href='delete.php?id=<?= $product['id'] ?>'">
+                                        Delete Product
+                                    </button>
+
                                 </div>
                             <?php endif; ?>
 
