@@ -19,12 +19,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ':p' => $_POST['price']
     ]);
     header("Location: index.php");
+    exit;
 }
+
+include "../includes/header.php";
 ?>
 
-<form method="POST">
-    <input name="product_name" required placeholder="Product name"><br>
-    <input name="category" required placeholder="Category"><br>
-    <input name="price" type="number" required placeholder="Price"><br>
-    <button>Add</button>
-</form>
+<div class="login_container">
+    <h2>Add Product</h2>
+
+    <form method="POST">
+        <input name="product_name" required placeholder="Product name" class="login_input"><br>
+        <select name="category" required class="login_input">
+		    <option value="">Select Category</option>
+		    <option value="Home">Home</option>
+		    <option value="Beauty Organizers">Beauty Organizers</option>
+		    <option value="Home Decor">Home Decor</option>
+		    <option value="Wedding Essentials">Wedding Essentials</option>
+		    <option value="Gifts">Gifts</option>
+		    <option value="Storage & Organizers">Storage & Organizers</option>
+		</select><br>
+
+        <input name="price" type="number" required placeholder="Price" class="login_input"><br>
+        <button class="login_btn">Add Product</button>
+    </form>
+</div>
+
+<?php include "../includes/footer.php"; ?>

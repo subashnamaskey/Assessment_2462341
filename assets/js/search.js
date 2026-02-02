@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        fetch(`search.php?ajax=1&q=${encodeURIComponent(query)}`)
+        fetch(`../public/search.php?ajax=1&q=${encodeURIComponent(query)}`)
             .then(response => response.json())
             .then(data => {
                 suggestionsBox.innerHTML = '';

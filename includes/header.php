@@ -63,17 +63,14 @@
 
         <!-- BOTTOM ROW -->
         <ul class="nav_links">
-            <li>
-                <a href="index.php" style="text-decoration:none; color:inherit;">
-                    Home
-                </a>
-            </li>
-            <li>Beauty Organizers</li>
-            <li>Home Decor</li>
-            <li>Wedding Essentials</li>
-            <li>Gifts</li>
-            <li>Storage & Organizers</li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="index.php?category=Beauty%20Organizers">Beauty Organizers</a></li>
+            <li><a href="index.php?category=Home%20Decor">Home Decor</a></li>
+            <li><a href="index.php?category=Wedding%20Essentials">Wedding Essentials</a></li>
+            <li><a href="index.php?category=Gifts">Gifts</a></li>
+            <li><a href="index.php?category=Storage%20%26%20Organizers">Storage & Organizers</a></li>
         </ul>
+
 
     </div>
 </nav>

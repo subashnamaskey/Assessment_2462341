@@ -109,6 +109,17 @@ body {
     text-decoration: underline;
 }
 
+/* Fix navbar link color */
+.nav_links a {
+    color: #925a5b;
+    text-decoration: none;
+}
+
+.nav_links a:hover {
+    text-decoration: underline;
+}
+
+
 /* ================= MAIN LAYOUT ================= */
 
 .main_container {
